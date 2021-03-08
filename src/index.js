@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Card from "react-bootstrap/Card";
+
+
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+  <Provider store={store}>
+    <React.StrictMode>
+    <Card body>
+      <App />
+      </Card>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
