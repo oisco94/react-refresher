@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 
-export class Register extends React.Component {
+export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,13 +14,16 @@ export class Register extends React.Component {
   }
 
   render() {
+    debugger;
+
     const { username, password } = this.state;
 
     return (
       <Form>
-        <h2>Register</h2>
-        <a href="/login">login</a>
-        <Form.Group>
+        <h2>Login</h2>
+        <a href="/register">register</a>
+
+        {/* <Form.Group>
           <Form.Label>username</Form.Label>
           <Form.Control
             type="text"
@@ -32,7 +35,7 @@ export class Register extends React.Component {
           />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group >
           <Form.Label>Password</Form.Label>
           <Form.Control
             required
@@ -44,14 +47,9 @@ export class Register extends React.Component {
           />
         </Form.Group>
 
-        <Button
-          variant="primary"
-          type="submit"
-          disabled={username.length <= 0 || password.length <= 0}
-          onClick={this.handleSubmit}
-        >
+        <Button variant="primary" type="submit" disabled={(username.length <= 0 || password.length <= 0)} onClick={this.handleSubmit}>
           Submit
-        </Button>
+        </Button> */}
       </Form>
     );
   }
@@ -62,13 +60,12 @@ export class Register extends React.Component {
   }
 
   handleSubmit = (event) => {
-    const { createUser } = this.props;
+    const { login } = this.props;
     const { username, password } = this.state;
 
     event.preventDefault();
     event.stopPropagation();
-    debugger;
 
-    createUser({ username, password });
+    login({ username, password });
   };
 }
