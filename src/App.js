@@ -7,7 +7,15 @@ import { history } from "./services/history";
 import RegisterContainer from "./features/register/register.container";
 import LoginContainer from "./features/login/login.container";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  Link,
+} from "react-router-dom";
+
+import { Button } from "react-bootstrap";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,26 +28,39 @@ class App extends React.Component {
     // });
 
     this._navigate.bind(this);
+    // const history = useHistory();
+    this.state = {
+      // redirect: null,
+    };
   }
 
   _navigate = () => {
-    debugger;
+    // this.setState({ ...this.state, redirect: "login" });
+
+    history.push("/login");
+  };
+
+  _renderContent = () => {
+    // if (this.state.redirect) {
+    //   return <Redirect to={this.state.redirect} />;
+    // }
+    // return (
+    //   <Switch>
+    //     <Route path="/login" component={LoginContainer} />
+    //     <Route path="/register" component={RegisterContainer} />
+    //     <Route path="/" component={LoginContainer} />
+    //   </Switch>
+    // );
   };
 
   render() {
     return (
       <div className="App">
-        <Router history={history}>
+        <Router>
           <Switch>
-            <Route path="/login">
-              <LoginContainer />
-            </Route>
-            <Route path="/register">
-              <RegisterContainer />
-            </Route>
-            <Route path="/" exact component={LoginContainer}>
-              <LoginContainer />
-            </Route>
+            <Route path="/login" component={LoginContainer} />
+            <Route path="/register" component={RegisterContainer} />
+            <Route path="/" component={LoginContainer} />
           </Switch>
         </Router>
       </div>

@@ -6,7 +6,9 @@ import {
 } from "../../constants/const";
 import { userService } from "../../services/userService";
 
-// import { push } from "react-router-redux";
+// import { browserHistory } from "react-router";
+
+import { history } from "../../services/history";
 
 export const userActions = {
   // login,
@@ -19,7 +21,7 @@ function logout() {
   return { type: LOGOUT };
 }
 
-function register(user) {
+function register(user, history) {
   return (dispatch) => {
     dispatch(request(user));
 
@@ -32,8 +34,11 @@ function register(user) {
 
         // dispatch(push("/login"));
 
-        // history.push("/login");
+        history.push("/login");
+        // browserHistory.push("/login");
+
         debugger;
+
         // dispatch(alertActions.success('Registration successful'));
       },
       (error) => {

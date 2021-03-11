@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 
+import { Link } from "react-router-dom";
+
 export class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ export class Register extends React.Component {
     return (
       <Form>
         <h2>Register</h2>
-        <a href="/login">login</a>
+        <Link to="/login">login</Link>
         <Form.Group>
           <Form.Label>username</Form.Label>
           <Form.Control
@@ -62,13 +64,12 @@ export class Register extends React.Component {
   }
 
   handleSubmit = (event) => {
-    const { createUser } = this.props;
+    const { createUser, history } = this.props;
     const { username, password } = this.state;
 
     event.preventDefault();
     event.stopPropagation();
-    debugger;
 
-    createUser({ username, password });
+    createUser({ username, password }, history);
   };
 }

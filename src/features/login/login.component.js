@@ -1,8 +1,11 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 
+import { Link } from "react-router-dom";
+
 export class Login extends React.Component {
   constructor(props) {
+    debugger;
     super(props);
     this.state = {
       username: "",
@@ -21,7 +24,7 @@ export class Login extends React.Component {
     return (
       <Form>
         <h2>Login</h2>
-        <a href="/register">register</a>
+        <Link to="/register">Register</Link>
 
         {/* <Form.Group>
           <Form.Label>username</Form.Label>
@@ -46,10 +49,10 @@ export class Login extends React.Component {
             onChange={this.handleChange}
           />
         </Form.Group>
-
-        <Button variant="primary" type="submit" disabled={(username.length <= 0 || password.length <= 0)} onClick={this.handleSubmit}>
+ */}
+        <Button variant="primary" type="submit" onClick={this.handleSubmit}>
           Submit
-        </Button> */}
+        </Button>
       </Form>
     );
   }
@@ -60,6 +63,8 @@ export class Login extends React.Component {
   }
 
   handleSubmit = (event) => {
+    this.props.history.push("./register");
+    /*
     const { login } = this.props;
     const { username, password } = this.state;
 
@@ -67,5 +72,6 @@ export class Login extends React.Component {
     event.stopPropagation();
 
     login({ username, password });
+    */
   };
 }
