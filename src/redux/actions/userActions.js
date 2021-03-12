@@ -3,6 +3,9 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   LOGOUT,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
 } from "../../constants/const";
 import { userService } from "../../services/userService";
 
@@ -11,7 +14,7 @@ import { userService } from "../../services/userService";
 import { history } from "../../services/history";
 
 export const userActions = {
-  // login,
+  login,
   logout,
   register,
 };
@@ -19,6 +22,33 @@ export const userActions = {
 function logout() {
   userService.logout();
   return { type: LOGOUT };
+}
+
+function login(userCredentials, history) {
+  return (dispatch) => {
+    dispatch(request(userCredentials));
+
+    userService
+      .login(userCredentials)
+      .then((resp) => {
+        debugger;
+        history.push("/home");
+        dispatch(success(resp));
+      })
+      .catch((err) => {
+        dispatch(failure(err));
+      });
+  };
+
+  function request(user) {
+    return { type: LOGIN_REQUEST, userCredentials };
+  }
+  function success(user) {
+    return { type: LOGIN_SUCCESS };
+  }
+  function failure(error) {
+    return { type: LOGIN_FAILURE };
+  }
 }
 
 function register(user, history) {

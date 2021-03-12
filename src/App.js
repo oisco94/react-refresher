@@ -15,7 +15,7 @@ import {
   Link,
 } from "react-router-dom";
 
-import { Button } from "react-bootstrap";
+import { HomeScreen } from "./features/home/home.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -60,6 +60,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" component={LoginContainer} />
             <Route path="/register" component={RegisterContainer} />
+            <Route path="/home" component={HomeScreen} />
             <Route path="/" component={LoginContainer} />
           </Switch>
         </Router>

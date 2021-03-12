@@ -26,7 +26,7 @@ export class Login extends React.Component {
         <h2>Login</h2>
         <Link to="/register">Register</Link>
 
-        {/* <Form.Group>
+        <Form.Group>
           <Form.Label>username</Form.Label>
           <Form.Control
             type="text"
@@ -38,7 +38,7 @@ export class Login extends React.Component {
           />
         </Form.Group>
 
-        <Form.Group >
+        <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control
             required
@@ -49,7 +49,7 @@ export class Login extends React.Component {
             onChange={this.handleChange}
           />
         </Form.Group>
- */}
+
         <Button variant="primary" type="submit" onClick={this.handleSubmit}>
           Submit
         </Button>
@@ -63,15 +63,13 @@ export class Login extends React.Component {
   }
 
   handleSubmit = (event) => {
-    this.props.history.push("./register");
-    /*
-    const { login } = this.props;
+    const { login, history } = this.props;
     const { username, password } = this.state;
 
     event.preventDefault();
     event.stopPropagation();
 
-    login({ username, password });
-    */
+    debugger;
+    login({ username, password }, history);
   };
 }

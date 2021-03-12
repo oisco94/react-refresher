@@ -11,9 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (userDetails) => {
-      debugger;
-      // dispatch(userActions.register(userToCreate));
+    login: (userDetails, history) => {
+      dispatch(userActions.login(userDetails, history));
     },
   };
 };
